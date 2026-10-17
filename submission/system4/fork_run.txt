@@ -1,0 +1,13 @@
+# System 4 — fork path (two competing hypotheses)
+$ python ../../submission/system4/fork_demo.py
+capacitor-bank-C-7 defects in warm tier: 12 (shift C: 10)
+base hot_state sha256[:16] before fork: c6a2b6f88d78e1e4; main scratchpad entries: 1
+fork H1-lot-dielectric: dir=data/forks/H1-lot-dielectric hot_state copy sha=c6a2b6f88d78e1e4 scratchpad entries=1
+fork H2-station-drift: dir=data/forks/H2-station-drift hot_state copy sha=c6a2b6f88d78e1e4 scratchpad entries=1
+H1 scratchpad sees H2 entry? False
+H2 scratchpad sees H1 entry? False
+base hot_state unchanged after forks: True
+main scratchpad entries after forks (before merge): 1
+main scratchpad entries after merge_findings: 3 -> ['shift-C', 'H1-lot-dielectric', 'H2-station-drift']
+base hot_state still unchanged after merge: True
+exit code: 0

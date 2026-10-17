@@ -19,3 +19,6 @@ uv.lock
 .ruff_cache/
 .coverage
 htmlcov/
+
+# Runtime state written by shift runs (copied into submission/system4)
+systems/system4-shift-monitor/data/

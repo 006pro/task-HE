@@ -1,0 +1,19 @@
+# System 4 — shift run (offline, recorded response)
+# path: systems/system4-shift-monitor   env: Windows 11, Python 3.14.7, PYTHONUTF8=1
+$ seed warm tier from fixtures/defects.json
+warm tier total defects: 40
+defects_since(2026-04-22T00:00:00Z): ['DEF-20260429-001', 'DEF-20260427-001', 'DEF-20260425-001', 'DEF-20260423-001']
+EXPLAIN QUERY PLAN: [(5, 0, 204, 'SEARCH defects USING INDEX idx_defects_ts (ts>?)')]
+
+$ python -m shift_monitor run-shift --shift C --warm-db data/warm.sqlite --since 2026-04-22T00:00:00Z --recorded-response fixtures/recorded_responses/shift_C_2026-04-30.json
+2026-10-17 20:05:07,590 shift_monitor.pipeline INFO run_shift start: shift=C since=2026-04-22T00:00:00Z
+2026-10-17 20:05:07,596 shift_monitor.pipeline INFO run_shift done: shift=C new=4
+shift C: 4 new defects
+Shift C 2026-04-30: 3 high + 2 medium defects on capacitor-bank-C-7, all from lot 2026-0430-B (DAR 0.39, ESR ~19 mOhm); 1 low VP-4 vent squeal (repeat). Lot quarantine recommended.
+exit code: 0
+
+$ wc -c data/hot_state.json
+718 bytes (budget: HOT_STATE_BYTE_BUDGET = 5120)
+
+$ cat data/shift_scratchpad.jsonl
+{"hypothesis_id":"shift-C","evidence":"4 new defects analyzed since 2026-04-22T00:00:00Z","conclusion":"Shift C 2026-04-30: 3 high + 2 medium defects on capacitor-bank-C-7, all from lot 2026-0430-B (DAR 0.39, ESR ~19 mOhm); 1 low VP-4 vent squeal (repeat). Lot quarantine recommended.","ts":"2026-10-17T14:35:07.594643Z"}

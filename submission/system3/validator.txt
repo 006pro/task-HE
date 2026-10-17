@@ -1,0 +1,4 @@
+# System 3 — config validator
+$ python -m ecommerce_team_config .
+OK
+exit code: 0
