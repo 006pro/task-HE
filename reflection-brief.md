@@ -1,6 +1,6 @@
 # Reflection Brief — Harness Engineering Capstone
 
-**Name:** Vimalesh RK
+**Name:** Narendran Chakkrapani
 **Date:** 2026-10-17
 
 All paths below are relative to this repository. Evidence lives in `submission/system{1..4}/`; the code that produced it lives in `systems/`.
